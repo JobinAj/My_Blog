@@ -1,0 +1,183 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&display=swap');
+
+:root {
+  /* ── Colours ──────────────────────────────────────────────── */
+  /* #07090a → #0d0d0d: prevents OLED smearing, easier on eyes  */
+  --nl-bg-0: #0d0d0d;
+  --nl-bg-1: #141414;
+  --nl-bg-2: #1a1a1a;
+  --nl-bg-3: #212121;
+  --nl-line-1: #242424;
+  --nl-line-2: #2e2e2e;
+  --nl-fg-0: #e8edf0;
+  --nl-fg-1: #b8c2c8;
+  --nl-fg-2: #7d8a92;
+  --nl-fg-3: #4a555c;
+  --nl-accent: #00ff9c;        /* contrast on #0d0d0d ≈ 13:1 — passes WCAG AAA */
+  --nl-accent-wash: rgba(0, 255, 156, 0.08);
+  --nl-accent-line: rgba(0, 255, 156, 0.22);
+  --nl-accent-glow: rgba(0, 255, 156, 0.35);
+  --nl-warn: #ffb020;
+  --nl-error: #ff4d5e;
+  --nl-info: #5ac8ff;
+  --nl-selection: rgba(0, 255, 156, 0.2);
+
+  /* ── Typography ───────────────────────────────────────────── */
+  --nl-font-mono: 'JetBrains Mono', 'SF Mono', monospace;
+  --nl-font-sans: 'IBM Plex Sans', system-ui, sans-serif;
+  --nl-font-serif: 'IBM Plex Serif', Georgia, serif;
+
+  /* ── Base font size (bumped +2px from 16 → 18 for readability) */
+  --nl-text-base: 18px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  font-size: var(--nl-text-base);
+  -webkit-text-size-adjust: 100%;
+}
+
+html, body {
+  background: var(--nl-bg-0);
+  color: var(--nl-fg-1);
+  font-family: var(--nl-font-sans);
+  min-height: 100vh;
+  line-height: 1.65;
+}
+
+body {
+  background-image: radial-gradient(circle, rgba(255,255,255,0.012) 1px, transparent 1px);
+  background-size: 18px 18px;
+}
+
+::selection { background: var(--nl-selection); color: var(--nl-fg-0); }
+
+/* blink < 2 Hz to reduce vestibular risk (WCAG 2.3.3) */
+@keyframes nl-blink { 50% { opacity: 0; } }
+.nl-cursor {
+  display: inline-block;
+  animation: nl-blink 1.4s steps(1) infinite;
+}
+
+/* ── PROSE ─────────────────────────────────────────────────── */
+.prose { font-size: 1.05rem; line-height: 1.8; color: var(--nl-fg-1); }
+.prose h2 {
+  font-family: var(--nl-font-mono); font-weight: 600; font-size: 1.25rem;
+  color: var(--nl-fg-0); margin: 2.5rem 0 0.75rem; letter-spacing: -0.01em;
+}
+.prose h3 {
+  font-family: var(--nl-font-mono); font-weight: 600; font-size: 1.05rem;
+  color: var(--nl-fg-0); margin: 2rem 0 0.5rem;
+}
+/* $ / # prefix on headings */
+.prose .h-prefix { color: var(--nl-accent); margin-right: 6px; }
+.prose h3 .h-prefix { color: var(--nl-fg-3); }
+.prose p  { margin: 0 0 1.2rem; max-width: 72ch; }
+.prose a  { color: var(--nl-accent); text-decoration: none; border-bottom: 1px solid var(--nl-accent-line); }
+.prose a:hover { border-bottom-color: var(--nl-accent); }
+.prose strong { color: var(--nl-fg-0); font-weight: 600; }
+.prose em { font-style: italic; }
+.prose code {
+  font-family: var(--nl-font-mono); font-size: 0.85em;
+  background: var(--nl-bg-2); color: var(--nl-fg-0);
+  padding: 1px 6px; border: 1px solid var(--nl-line-2); border-radius: 3px;
+}
+.prose blockquote {
+  font-family: var(--nl-font-serif); font-style: italic; font-size: 1.1rem;
+  line-height: 1.55; color: var(--nl-fg-0);
+  padding-left: 16px; border-left: 2px solid var(--nl-accent); margin: 1.5rem 0;
+}
+.prose hr { border: none; border-top: 1px solid var(--nl-line-1); margin: 2rem 0; }
+
+/* code block with copy button */
+.prose pre {
+  position: relative;
+  margin: 1.5rem 0;
+  background: var(--nl-bg-1); border: 1px solid var(--nl-line-1);
+  border-radius: 4px; padding: 2.2rem 1.2rem 1rem; overflow-x: auto;
+  white-space: pre; word-wrap: normal;
+}
+/* language badge (top-left, injected by CodeCopyButtons) */
+.prose pre .code-lang {
+  position: absolute; top: 8px; left: 10px;
+  font-family: var(--nl-font-mono); font-size: 10px;
+  color: var(--nl-accent); letter-spacing: 0.06em; text-transform: lowercase;
+  pointer-events: none;
+}
+.prose pre code {
+  background: none; border: none; padding: 0;
+  font-size: 0.82rem; line-height: 1.65; color: var(--nl-fg-0);
+}
+.prose pre .copy-btn {
+  position: absolute; top: 8px; right: 8px;
+  font-family: var(--nl-font-mono); font-size: 10px;
+  padding: 3px 8px; background: var(--nl-bg-2);
+  color: var(--nl-fg-3); border: 1px solid var(--nl-line-2);
+  border-radius: 2px; cursor: pointer; opacity: 0; transition: opacity 80ms;
+}
+.prose pre:hover .copy-btn { opacity: 1; }
+.prose pre .copy-btn:hover { color: var(--nl-accent); border-color: var(--nl-accent-line); }
+.prose pre .copy-btn.copied { color: var(--nl-accent); }
+
+/* ── BUTTONS ────────────────────────────────────────────────── */
+.nl-newbtn {
+  font-family: var(--nl-font-mono); font-size: 12px; padding: 5px 14px;
+  background: var(--nl-accent-wash); color: var(--nl-accent);
+  border: 1px solid var(--nl-accent-line); border-radius: 2px;
+  cursor: pointer; transition: background 120ms; text-decoration: none; display: inline-block;
+}
+.nl-newbtn:hover { background: rgba(0,255,156,0.14); }
+
+.nl-ebtn {
+  font-family: var(--nl-font-mono); font-size: 10px; padding: 2px 8px;
+  background: transparent; color: var(--nl-fg-3);
+  border: 1px solid var(--nl-line-2); border-radius: 2px;
+  cursor: pointer; opacity: 0; transition: opacity 80ms, color 80ms, border-color 80ms;
+}
+.nl-ebtn:hover { color: var(--nl-accent); border-color: var(--nl-accent-line); }
+.nl-row:hover .nl-ebtn, article:hover .nl-ebtn { opacity: 1; }
+
+/* admin-mode badge */
+.nl-admin-badge {
+  font-family: var(--nl-font-mono); font-size: 10px; padding: 2px 8px;
+  background: var(--nl-accent-wash); color: var(--nl-accent);
+  border: 1px solid var(--nl-accent-line); border-radius: 2px;
+  letter-spacing: 0.04em;
+}
+
+/* ── VIM EDITOR ─────────────────────────────────────────────── */
+.nl-ed { position: fixed; inset: 0; z-index: 60; background: var(--nl-bg-0); display: flex; flex-direction: column; }
+.nl-ed-top, .nl-ed-bot { padding: 6px 16px; background: var(--nl-bg-1); display: flex; align-items: center; gap: 16px; font-family: var(--nl-font-mono); font-size: 12px; }
+.nl-ed-top { border-bottom: 1px solid var(--nl-line-1); }
+.nl-ed-bot { border-top: 1px solid var(--nl-line-1); }
+.nl-ed-mode { padding: 2px 10px; border-radius: 2px; font-weight: 700; font-size: 11px; letter-spacing: 0.04em; color: #0d0d0d; }
+.nl-ed-body { flex: 1; overflow: hidden; }
+
+/* CodeMirror overrides */
+.cm-editor { height: 100%; background: var(--nl-bg-0) !important; }
+.cm-scroller { font-family: var(--nl-font-mono) !important; font-size: 14px !important; line-height: 1.75 !important; padding: 16px 28px !important; }
+.cm-gutters { background: var(--nl-bg-1) !important; border-right: 1px solid var(--nl-line-1) !important; }
+.cm-lineNumbers .cm-gutterElement { color: var(--nl-fg-3) !important; padding: 0 14px !important; }
+.cm-activeLine { background: rgba(255,255,255,0.02) !important; }
+.cm-activeLineGutter { background: rgba(255,255,255,0.03) !important; }
+.cm-cursor { border-left-color: var(--nl-accent) !important; border-left-width: 2px !important; }
+.cm-selectionBackground { background: var(--nl-selection) !important; }
+.cm-focused .cm-selectionBackground { background: var(--nl-selection) !important; }
+
+/* ── TAG SEARCH ─────────────────────────────────────────────── */
+.nl-search-wrap {
+  display: flex; align-items: center; gap: 8px;
+  font-family: var(--nl-font-mono); font-size: 13px;
+  color: var(--nl-fg-3); margin-bottom: 24px;
+  border: 1px solid var(--nl-line-1); border-radius: 2px;
+  background: var(--nl-bg-1); padding: 8px 14px;
+  transition: border-color 120ms;
+}
+.nl-search-wrap:focus-within { border-color: var(--nl-accent-line); }
+.nl-search-input {
+  background: transparent; border: none; outline: none;
+  font-family: var(--nl-font-mono); font-size: 13px; color: var(--nl-fg-0);
+  flex: 1; caret-color: var(--nl-accent);
+}
+.nl-search-input::placeholder { color: var(--nl-fg-3); }
