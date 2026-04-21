@@ -24,6 +24,7 @@ export const metadata: Metadata = {
     description: 'A log of things reverse-engineered, broken, rebuilt, or worth writing down.',
   },
   robots: { index: true, follow: true },
+  icons: { icon: '/favicon.svg' },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
