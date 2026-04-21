@@ -24,7 +24,7 @@ export default async function ProjectsPage() {
         Things I&apos;ve built and maintained. Most are small. A few are not.
       </p>
 
-      <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+      <table style={{ width: '100%', borderCollapse: 'collapse', tableLayout: 'fixed' }}>
         <thead>
           <tr style={{ borderBottom: '1px solid var(--nl-line-2)' }}>
             {['name', 'description', '★', 'lang', ''].map(h => (
@@ -48,10 +48,10 @@ export default async function ProjectsPage() {
               <td style={{ padding: 0, position: 'absolute', inset: 0, pointerEvents: 'none' }}>
                 <Link href={`/projects/${encodeURIComponent(p.name)}`} style={{ position: 'absolute', inset: 0, zIndex: 1, pointerEvents: 'auto' }} aria-label={p.name} />
               </td>
-              <td style={{ padding: '12px 0', fontFamily: 'var(--nl-font-mono)', fontSize: 13, color: 'var(--nl-accent)', width: 160 }}>
+              <td style={{ padding: '12px 0', fontFamily: 'var(--nl-font-mono)', fontSize: 13, color: 'var(--nl-accent)', width: 240, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', paddingRight: 16 }}>
                 {p.name}
               </td>
-              <td style={{ padding: '12px 16px', fontFamily: 'var(--nl-font-sans)', fontSize: 14, lineHeight: 1.5, color: 'var(--nl-fg-1)' }}>
+              <td style={{ padding: '12px 16px', fontFamily: 'var(--nl-font-sans)', fontSize: 14, lineHeight: 1.5, color: 'var(--nl-fg-1)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                 {p.desc}
               </td>
               <td style={{ padding: '12px 0', fontFamily: 'var(--nl-font-mono)', fontSize: 11, color: 'var(--nl-fg-3)', textAlign: 'right', width: 60 }}>
