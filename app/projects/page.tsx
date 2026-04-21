@@ -52,25 +52,53 @@ export default async function ProjectsPage() {
             </td></tr>
           ) : projects.map((p, i) => (
             <tr key={p.name} className="nl-row" style={{ position: 'relative', borderBottom: '1px dashed var(--nl-line-1)' }}>
-              {/* stretched link (z-index 1) */}
-              <td style={{ padding: 0, position: 'absolute', inset: 0, pointerEvents: 'none' }}>
-                <Link href={`/projects/${encodeURIComponent(p.name)}`} style={{ position: 'absolute', inset: 0, zIndex: 1, pointerEvents: 'auto' }} aria-label={p.name} />
-              </td>
-              <td style={{ padding: '12px 0', fontFamily: 'var(--nl-font-mono)', fontSize: 13, color: 'var(--nl-accent)', width: 240, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', paddingRight: 16 }}>
+
+              {/* col 1: NAME — stretched link lives here */}
+              <td style={{
+                padding: '12px 16px 12px 0',
+                fontFamily: 'var(--nl-font-mono)', fontSize: 13, color: 'var(--nl-accent)',
+                whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis',
+                position: 'relative',
+              }}>
+                {/* stretched link covers the whole row (z-index 1) */}
+                <Link
+                  href={`/projects/${encodeURIComponent(p.name)}`}
+                  style={{ position: 'absolute', inset: '-12px -9999px', zIndex: 1 }}
+                  aria-label={p.name}
+                />
                 {p.name}
               </td>
-              <td style={{ padding: '12px 16px', fontFamily: 'var(--nl-font-sans)', fontSize: 14, lineHeight: 1.5, color: 'var(--nl-fg-1)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+
+              {/* col 2: DESCRIPTION — truncated */}
+              <td style={{
+                padding: '12px 16px', fontFamily: 'var(--nl-font-sans)', fontSize: 14,
+                color: 'var(--nl-fg-1)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis',
+                maxWidth: 0, /* forces ellipsis in fixed table */
+              }}>
                 {p.desc}
               </td>
-              <td style={{ padding: '12px 0', fontFamily: 'var(--nl-font-mono)', fontSize: 11, color: 'var(--nl-fg-3)', textAlign: 'right', width: 60 }}>
-                {p.stars}
+
+              {/* col 3: STARS */}
+              <td style={{
+                padding: '12px 0', fontFamily: 'var(--nl-font-mono)', fontSize: 11,
+                color: 'var(--nl-fg-3)', textAlign: 'right', whiteSpace: 'nowrap',
+              }}>
+                {p.stars ? `${p.stars} ★` : ''}
               </td>
-              <td style={{ padding: '12px 0 12px 16px', fontFamily: 'var(--nl-font-mono)', fontSize: 11, color: 'var(--nl-fg-2)', width: 60 }}>
+
+              {/* col 4: LANG */}
+              <td style={{
+                padding: '12px 0 12px 16px', fontFamily: 'var(--nl-font-mono)',
+                fontSize: 11, color: 'var(--nl-fg-2)', whiteSpace: 'nowrap',
+              }}>
                 {p.lang}
               </td>
-              <td style={{ padding: '12px 0', width: 50, position: 'relative', zIndex: 2 }}>
+
+              {/* col 5: admin edit button */}
+              <td style={{ padding: '12px 0', position: 'relative', zIndex: 2, textAlign: 'right' }}>
                 <AdminButton mode="project" item={p} index={i} label="edit" isEdit />
               </td>
+
             </tr>
           ))}
         </tbody>
