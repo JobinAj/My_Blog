@@ -37,7 +37,7 @@ export default function ColophonPage() {
         </ul>
         <h3 style={{ margin: '32px 0 10px', fontFamily: 'var(--nl-font-mono)', fontSize: 18, fontWeight: 600, color: 'var(--nl-fg-0)' }}>Reach me</h3>
         <ul style={{ paddingLeft: 22 }}>
-          <li><a href="#" style={link}>mail</a> — encrypt if you like (<code style={inlineCode}>0BDF7EBFB38BF69D9531F7E6CD44CE2DA84B5813</code>)</li>
+          <li><a href="#" style={link}>mail</a> — encrypt if you like (<a href="https://keys.openpgp.org/vks/v1/by-fingerprint/0BDF7EBFB38BF69D9531F7E6CD44CE2DA84B5813" target="_blank" rel="noopener noreferrer" style={{ ...inlineCode, ...link, borderBottom: '1px solid var(--nl-accent-line)' }}>0BDF7E…B5813</a>)</li>
           <li style={{ marginTop: 6 }}><a href="https://github.com/JobinAj/" style={link}>github</a></li>
         </ul>
       </div>
