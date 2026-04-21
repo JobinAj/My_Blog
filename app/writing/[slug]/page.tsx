@@ -100,17 +100,22 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
         )}
 
         {/* ── body ── */}
-        <div
-          className="prose"
-          style={{ fontFamily: sans, fontSize: 17, lineHeight: 1.8, color: 'var(--nl-fg-1)', maxWidth: '72ch' }}
-          {...(bodyHtml ? { dangerouslySetInnerHTML: { __html: bodyHtml } } : {})}
-        >
-          {!bodyHtml && (
+        {bodyHtml ? (
+          <div
+            className="prose"
+            style={{ fontFamily: sans, fontSize: 17, lineHeight: 1.8, color: 'var(--nl-fg-1)', maxWidth: '72ch' }}
+            dangerouslySetInnerHTML={{ __html: bodyHtml }}
+          />
+        ) : (
+          <div
+            className="prose"
+            style={{ fontFamily: sans, fontSize: 17, lineHeight: 1.8, color: 'var(--nl-fg-1)', maxWidth: '72ch' }}
+          >
             <p style={{ color: 'var(--nl-fg-3)', fontStyle: 'italic', fontFamily: mono, fontSize: 13 }}>
               $ # no content yet — click &quot;edit in vim&quot; above to write the post body.
             </p>
-          )}
-        </div>
+          </div>
+        )}
 
         <CodeCopyButtons />
 
