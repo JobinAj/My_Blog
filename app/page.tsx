@@ -56,6 +56,13 @@ export default async function HomePage() {
               src="/profile.png" 
               alt="JobinAj" 
               className="avatar"
+              style={{ 
+                width: 64, 
+                height: 64, 
+                borderRadius: '50%', 
+                objectFit: 'cover',
+                display: 'block'
+              }}
             />
           </div>
           <div>
