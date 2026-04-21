@@ -26,7 +26,7 @@ export default function ColophonPage() {
        /--m-m-`}
       </pre>
       <div style={{ fontFamily: 'var(--nl-font-sans)', fontSize: 16, lineHeight: 1.7, color: 'var(--nl-fg-1)' }}>
-        <p>I&apos;m an engineer who writes mostly Go, spends too much time in Wireshark, and keeps finding new reasons to care about DNS. This site is where I write things down so I stop forgetting them.</p>
+        <p>I&apos;m an engineer who writes mostly Go, breaks things on purpose, and spends too much time in Wireshark. Mostly DevOps, security, and networking — and keeps finding new reasons to care about DNS. This site is where I write things down so I stop forgetting them.</p>
         <p style={{ marginTop: 16 }}>No trackers. No analytics. No cookies.</p>
         <h3 style={{ margin: '32px 0 10px', fontFamily: 'var(--nl-font-mono)', fontSize: 18, fontWeight: 600, color: 'var(--nl-fg-0)' }}>Built with</h3>
         <ul style={{ paddingLeft: 22 }}>
