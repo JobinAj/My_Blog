@@ -52,8 +52,8 @@ export default async function HomePage() {
         }}>
           {/* profile picture */}
           <div style={{
-            width: 56, height: 56, flexShrink: 0,
-            borderRadius: '4px', overflow: 'hidden',
+            width: 64, height: 64, flexShrink: 0,
+            borderRadius: '50%', overflow: 'hidden',
             border: '1px solid var(--nl-line-2)',
           }}>
             <img 
