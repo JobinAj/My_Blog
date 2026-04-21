@@ -16,11 +16,11 @@ export default function Footer() {
           <span>cat /dev/thoughts &gt; null.log</span>
         </div>
         <div style={{ display: 'flex', gap: 12, fontFamily: 'var(--nl-font-mono)', fontSize: 12, alignItems: 'center' }}>
-          {['rss', 'github', 'mastodon'].map(l => (
-            <a key={l} href="#" style={{
+          {[['rss', '/feed.xml'], ['github', 'https://github.com/JobinAj/']].map(([label, href]) => (
+            <a key={label} href={href} style={{
               color: 'var(--nl-fg-1)', textDecoration: 'none',
               borderBottom: '1px solid var(--nl-accent-line)',
-            }}>{l}</a>
+            }}>{label}</a>
           ))}
           <span style={{ color: 'var(--nl-fg-3)' }}>·</span>
           <span style={{ color: 'var(--nl-fg-3)' }}>© {new Date().getFullYear()}</span>

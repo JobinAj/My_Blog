@@ -64,13 +64,13 @@ export default async function HomePage() {
           </div>
           <div>
             <div style={{ fontFamily: 'var(--nl-font-mono)', fontSize: 14, color: 'var(--nl-fg-0)', fontWeight: 600 }}>
-              null
+              JobinAj
             </div>
             <div style={{ fontFamily: 'var(--nl-font-sans)', fontSize: 14, color: 'var(--nl-fg-2)', marginTop: 2 }}>
-              Engineer · Go · Networks · Security
+              DevOps · Networking · Golang · Cybersecurity
             </div>
             <div style={{ display: 'flex', gap: 12, marginTop: 6 }}>
-              {[['github', '#'], ['mastodon', '#'], ['rss', '/feed.xml']].map(([label, href]) => (
+              {[['github', 'https://github.com/JobinAj/'], ['rss', '/feed.xml']].map(([label, href]) => (
                 <a key={label} href={href} style={{
                   fontFamily: 'var(--nl-font-mono)', fontSize: 11, color: 'var(--nl-fg-3)',
                   textDecoration: 'none', borderBottom: '1px solid var(--nl-line-2)',
