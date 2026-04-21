@@ -1,7 +1,6 @@
 'use client'
 import { useState, useCallback } from 'react'
 import dynamic from 'next/dynamic'
-import { saveBlogData, getBlogData } from '@/lib/supabase'
 import type { Post, Note, Project } from '@/lib/types'
 import { useRouter } from 'next/navigation'
 import { useAdmin } from './AdminProvider'
@@ -24,26 +23,35 @@ export default function AdminButton({ mode, item = null, index = null, label, is
   const [saving, setSaving] = useState(false)
   const router = useRouter()
 
-  // ⚠ All hooks MUST be called before any early return (Rules of Hooks)
+  // ⚠ All hooks must be called before early return (Rules of Hooks)
   const handleSave = useCallback(async (newItem: Post | Note | Project, idx: number | null) => {
     setSaving(true)
     try {
-      const data = await getBlogData()
-      if (mode === 'post') {
-        const p = newItem as Post
-        const i = data.posts.findIndex(x => x.slug === ((item as Post)?.slug ?? p.slug))
-        if (i >= 0) data.posts[i] = p; else data.posts.unshift(p)
+      const res = await fetch('/api/save', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'same-origin',
+        body: JSON.stringify({
+          mode,
+          item: newItem,
+          // pass original identifiers so the server can find the existing record
+          existingSlug: mode === 'post'    ? (item as Post)?.slug       : undefined,
+          existingName: mode === 'project' ? (item as Project)?.name    : undefined,
+          index: idx,
+        }),
+      })
+
+      if (res.status === 401) {
+        // session expired — redirect to login
+        router.push('/admin')
+        return
       }
-      if (mode === 'note') {
-        const n = newItem as Note
-        if (idx !== null && idx >= 0) data.notes[idx] = n; else data.notes.unshift(n)
+
+      if (!res.ok) {
+        console.error('Save failed', await res.text())
+        return
       }
-      if (mode === 'project') {
-        const p = newItem as Project
-        const i = data.projects.findIndex(x => x.name === ((item as Project)?.name ?? p.name))
-        if (i >= 0) data.projects[i] = p; else data.projects.push(p)
-      }
-      await saveBlogData(data)
+
       setOpen(false)
       router.refresh()
     } finally {
@@ -51,7 +59,7 @@ export default function AdminButton({ mode, item = null, index = null, label, is
     }
   }, [mode, item, router])
 
-  // guard AFTER all hooks — safe to early-return here
+  // guard AFTER all hooks
   if (!isAdmin) return null
 
   return (
