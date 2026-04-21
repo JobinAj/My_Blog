@@ -120,6 +120,16 @@ body {
 .prose pre .copy-btn:hover { color: var(--nl-accent); border-color: var(--nl-accent-line); }
 .prose pre .copy-btn.copied { color: var(--nl-accent); }
 
+/* ── BIO LINKS ──────────────────────────────────────────────── */
+.nl-bio-link {
+  font-family: var(--nl-font-mono); font-size: 12px; color: var(--nl-fg-2);
+  text-decoration: none; border-bottom: 1px solid var(--nl-line-2);
+  transition: color 80ms, border-color 80ms;
+}
+.nl-bio-link:hover {
+  color: var(--nl-accent); border-bottom-color: var(--nl-accent-line);
+}
+
 /* ── BUTTONS ────────────────────────────────────────────────── */
 .nl-newbtn {
   font-family: var(--nl-font-mono); font-size: 12px; padding: 5px 14px;

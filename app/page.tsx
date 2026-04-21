@@ -52,7 +52,7 @@ export default async function HomePage() {
         }}>
           {/* profile picture */}
           <div style={{
-            width: 52, height: 52, flexShrink: 0,
+            width: 56, height: 56, flexShrink: 0,
             borderRadius: '4px', overflow: 'hidden',
             border: '1px solid var(--nl-line-2)',
           }}>
@@ -66,16 +66,17 @@ export default async function HomePage() {
             <div style={{ fontFamily: 'var(--nl-font-mono)', fontSize: 14, color: 'var(--nl-fg-0)', fontWeight: 600 }}>
               JobinAj
             </div>
-            <div style={{ fontFamily: 'var(--nl-font-sans)', fontSize: 13, color: 'var(--nl-fg-2)', marginTop: 2 }}>
-              DevOps · Linux · Cloud · Networking · Golang · Security
+            <div style={{ display: 'flex', flexWrap: 'wrap', columnGap: 8, rowGap: 4, fontFamily: 'var(--nl-font-sans)', fontSize: 13, color: 'var(--nl-fg-2)', marginTop: 2 }}>
+              {['DevOps', 'Linux', 'Cloud', 'Networking', 'Golang', 'Cybersecurity'].map((t, i, a) => (
+                <span key={t} style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
+                  {t}
+                  {i < a.length - 1 && <span style={{ opacity: 0.4 }}>·</span>}
+                </span>
+              ))}
             </div>
-            <div style={{ display: 'flex', gap: 12, marginTop: 6 }}>
+            <div style={{ display: 'flex', gap: 12, marginTop: 8 }}>
               {[['github', 'https://github.com/JobinAj/'], ['rss', '/feed.xml']].map(([label, href]) => (
-                <a key={label} href={href} style={{
-                  fontFamily: 'var(--nl-font-mono)', fontSize: 11, color: 'var(--nl-fg-3)',
-                  textDecoration: 'none', borderBottom: '1px solid var(--nl-line-2)',
-                  transition: 'color 80ms, border-color 80ms',
-                }}>{label}</a>
+                <a key={label} href={href} className="nl-bio-link">{label}</a>
               ))}
             </div>
           </div>
