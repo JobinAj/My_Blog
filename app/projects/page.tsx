@@ -27,14 +27,22 @@ export default async function ProjectsPage() {
       <table style={{ width: '100%', borderCollapse: 'collapse', tableLayout: 'fixed' }}>
         <thead>
           <tr style={{ borderBottom: '1px solid var(--nl-line-2)' }}>
-            {['name', 'description', '★', 'lang', ''].map(h => (
-              <th key={h} style={{
-                padding: '10px 0', textAlign: h === '★' ? 'right' : 'left',
-                fontFamily: 'var(--nl-font-mono)', fontSize: 10, textTransform: 'uppercase',
-                letterSpacing: '0.08em', color: 'var(--nl-fg-3)', fontWeight: 500,
-                paddingLeft: h === 'description' || h === 'lang' ? 16 : 0,
-              }}>{h}</th>
-            ))}
+            {['name', 'description', '★', 'lang', ''].map(h => {
+              let w;
+              if (h === 'name') w = 240;
+              else if (h === '★' || h === 'lang') w = 60;
+              else if (h === '') w = 50; // admin button col
+
+              return (
+                <th key={h} style={{
+                  width: w,
+                  padding: '10px 0', textAlign: h === '★' ? 'right' : 'left',
+                  fontFamily: 'var(--nl-font-mono)', fontSize: 10, textTransform: 'uppercase',
+                  letterSpacing: '0.08em', color: 'var(--nl-fg-3)', fontWeight: 500,
+                  paddingLeft: h === 'description' || h === 'lang' ? 16 : 0,
+                }}>{h}</th>
+              )
+            })}
           </tr>
         </thead>
         <tbody>
