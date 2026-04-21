@@ -51,15 +51,11 @@ export default async function HomePage() {
           maxWidth: '60ch',
         }}>
           {/* profile picture */}
-          <div style={{
-            width: 64, height: 64, flexShrink: 0,
-            borderRadius: '50%', overflow: 'hidden',
-            border: '1px solid var(--nl-line-2)',
-          }}>
+          <div style={{ flexShrink: 0, display: 'flex', border: '1px solid var(--nl-line-2)', borderRadius: '50%' }}>
             <img 
               src="/profile.png" 
               alt="JobinAj" 
-              style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+              className="avatar"
             />
           </div>
           <div>

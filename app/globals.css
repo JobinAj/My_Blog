@@ -130,6 +130,16 @@ body {
   color: var(--nl-accent); border-bottom-color: var(--nl-accent-line);
 }
 
+/* Force the avatar to 64px — override any parent constraints */
+.avatar img,
+img.avatar {
+  width: 64px !important;
+  height: 64px !important;
+  min-width: 64px !important;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
 /* ── BUTTONS ────────────────────────────────────────────────── */
 .nl-newbtn {
   font-family: var(--nl-font-mono); font-size: 12px; padding: 5px 14px;
