@@ -17,7 +17,7 @@ export default async function HomePage() {
 
       {/* ── author bio / whoami ── */}
       <section style={{ marginBottom: 56 }}>
-        <div style={{ fontFamily: 'var(--nl-font-mono)', fontSize: 12, color: 'var(--nl-fg-2)', marginBottom: 12 }}>
+        <div style={{ fontFamily: 'var(--nl-font-mono)', fontSize: 12, color: 'var(--nl-fg-1)', marginBottom: 12 }}>
           <span style={{ color: 'var(--nl-accent)' }}>$</span>&nbsp;whoami
         </div>
         <h1 style={{
@@ -69,7 +69,7 @@ export default async function HomePage() {
             <div style={{ fontFamily: 'var(--nl-font-mono)', fontSize: 14, color: 'var(--nl-fg-0)', fontWeight: 600 }}>
               JobinAj
             </div>
-            <div style={{ display: 'flex', flexWrap: 'wrap', columnGap: 8, rowGap: 4, fontFamily: 'var(--nl-font-sans)', fontSize: 13, color: 'var(--nl-fg-2)', marginTop: 2 }}>
+            <div style={{ display: 'flex', flexWrap: 'wrap', columnGap: 8, rowGap: 4, fontFamily: 'var(--nl-font-sans)', fontSize: 13, color: 'var(--nl-fg-1)', marginTop: 2 }}>
               {['DevOps', 'Linux', 'Cloud', 'Networking', 'Golang', 'Cybersecurity'].map((t, i, a) => (
                 <span key={t} style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
                   {t}
@@ -88,12 +88,12 @@ export default async function HomePage() {
 
       {/* ── writing section ── */}
       <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 16 }}>
-        <div style={{ fontFamily: 'var(--nl-font-mono)', fontSize: 11, color: 'var(--nl-fg-3)', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
+        <div style={{ fontFamily: 'var(--nl-font-mono)', fontSize: 11, color: 'var(--nl-fg-1)', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
           § writing
         </div>
         <div style={{ flex: 1, height: 1, background: 'var(--nl-line-1)' }} />
         <AdminButton mode="post" label="+ new post" />
-        <div style={{ fontFamily: 'var(--nl-font-mono)', fontSize: 11, color: 'var(--nl-fg-3)' }}>
+        <div style={{ fontFamily: 'var(--nl-font-mono)', fontSize: 11, color: 'var(--nl-fg-1)' }}>
           {posts.length} posts
         </div>
       </div>

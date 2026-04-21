@@ -84,7 +84,7 @@ function PostListInner({ posts }: { posts: Post[] }) {
           {/* stretched link covers the card (z-index 1) */}
           <Link href={`/writing/${p.slug}`} style={{ position: 'absolute', inset: 0, zIndex: 1 }} aria-label={p.title} />
           
-          <div style={{ fontFamily: 'var(--nl-font-mono)', fontSize: 12, color: 'var(--nl-fg-3)', paddingTop: 4 }}>
+          <div style={{ fontFamily: 'var(--nl-font-mono)', fontSize: 12, color: 'var(--nl-fg-1)', paddingTop: 4 }}>
             {p.date}
           </div>
           

@@ -122,7 +122,7 @@ body {
 
 /* ── BIO LINKS ──────────────────────────────────────────────── */
 .nl-bio-link {
-  font-family: var(--nl-font-mono); font-size: 12px; color: var(--nl-fg-2);
+  font-family: var(--nl-font-mono); font-size: 12px; color: var(--nl-fg-1);
   text-decoration: none; border-bottom: 1px solid var(--nl-line-2);
   transition: color 80ms, border-color 80ms;
 }
@@ -200,4 +200,4 @@ img.avatar {
   font-family: var(--nl-font-mono); font-size: 13px; color: var(--nl-fg-0);
   flex: 1; caret-color: var(--nl-accent);
 }
-.nl-search-input::placeholder { color: var(--nl-fg-3); }
+.nl-search-input::placeholder { color: var(--nl-fg-1); }
