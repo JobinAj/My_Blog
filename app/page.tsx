@@ -50,24 +50,24 @@ export default async function HomePage() {
           borderRadius: 2,
           maxWidth: '60ch',
         }}>
-          {/* avatar placeholder — ASCII art initials */}
+          {/* profile picture */}
           <div style={{
-            width: 44, height: 44, flexShrink: 0,
-            background: 'var(--nl-accent-wash)',
-            border: '1px solid var(--nl-accent-line)',
-            borderRadius: 2,
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-            fontFamily: 'var(--nl-font-mono)', fontSize: 18, fontWeight: 700,
-            color: 'var(--nl-accent)',
+            width: 52, height: 52, flexShrink: 0,
+            borderRadius: '4px', overflow: 'hidden',
+            border: '1px solid var(--nl-line-2)',
           }}>
-            ~
+            <img 
+              src="/profile.png" 
+              alt="JobinAj" 
+              style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+            />
           </div>
           <div>
             <div style={{ fontFamily: 'var(--nl-font-mono)', fontSize: 14, color: 'var(--nl-fg-0)', fontWeight: 600 }}>
               JobinAj
             </div>
-            <div style={{ fontFamily: 'var(--nl-font-sans)', fontSize: 14, color: 'var(--nl-fg-2)', marginTop: 2 }}>
-              DevOps · Networking · Golang · Cybersecurity
+            <div style={{ fontFamily: 'var(--nl-font-sans)', fontSize: 13, color: 'var(--nl-fg-2)', marginTop: 2 }}>
+              DevOps · Linux · Cloud · Networking · Golang · Security
             </div>
             <div style={{ display: 'flex', gap: 12, marginTop: 6 }}>
               {[['github', 'https://github.com/JobinAj/'], ['rss', '/feed.xml']].map(([label, href]) => (
