@@ -1,6 +1,13 @@
 import { SignJWT, jwtVerify } from 'jose'
 import { cookies } from 'next/headers'
 
+/** Decode the base64-encoded bcrypt hash stored in env (avoids $ interpolation issues) */
+export function getPasswordHash(): string | undefined {
+  const b64 = process.env.ADMIN_PASSWORD_HASH
+  if (!b64) return undefined
+  return Buffer.from(b64, 'base64').toString('utf-8')
+}
+
 export const COOKIE_NAME = 'nl-admin-token'
 const EXPIRE            = '7d'
 
